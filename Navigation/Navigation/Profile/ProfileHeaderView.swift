@@ -19,17 +19,17 @@ class ProfileHeaderView: UIView {
         self.setupView()
     }
     
-    let imageView = UIImageView()
-    let fullNameLabel = UILabel()
-    let statusTextView = UITextView()
-    let setStatusButton = UIButton()
-    var statusTextField = UITextField()
-    private var statusText: String = ""
+    private lazy var imageView = UIImageView()
+    private lazy var fullNameLabel = UILabel()
+    private lazy var statusTextView = UITextView()
+    private lazy var setStatusButton = UIButton()
+    private lazy var statusTextField = UITextField()
+    private lazy var statusText: String = ""
     
     private func setupView() {
         
         imageView.backgroundColor = .green
-        imageView.image = UIImage(named: "Cat.jpeg")
+        imageView.image = UIImage(named: "Cat")
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 55
         imageView.clipsToBounds = true
