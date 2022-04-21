@@ -49,7 +49,7 @@ class ProfileHeaderView: UIView {
 
         fullNameLabel.text = "Hipster cat"
         fullNameLabel.textColor = .black
-        fullNameLabel.textAlignment = .center
+        fullNameLabel.textAlignment = .left
         fullNameLabel.font = UIFont.boldSystemFont(ofSize: 18)
         self.addSubview(fullNameLabel)
 
