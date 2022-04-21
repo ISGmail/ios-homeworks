@@ -14,17 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-    /*    let tabCtrl = UITabBarController()
-        
-        let profileView = ProfileViewController()
-        let bandView    = BandViewController()
-        
-        let bandNaviCtrl = UINavigationController(rootViewController: bandView)
-        let profileViewCtrl = UINavigationController(rootViewController: profileView)
-        
-        
-        tabCtrl.setViewControllers([bandNaviCtrl, profileViewCtrl], animated: true)*/
-        
         return true
     }
 

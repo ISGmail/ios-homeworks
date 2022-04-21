@@ -17,6 +17,8 @@
 		201A3384280E86BD00E284C5 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201A3383280E86BD00E284C5 /* PostViewController.swift */; };
 		201A3386280E886700E284C5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201A3385280E886700E284C5 /* ProfileViewController.swift */; };
 		201A3388280E8B8500E284C5 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201A3387280E8B8500E284C5 /* InfoViewController.swift */; };
+		201A338B280FB2D000E284C5 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201A338A280FB2D000E284C5 /* ProfileHeaderView.swift */; };
+		20B7CE1828101BD400027172 /* Cat.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 20B7CE1728101BD400027172 /* Cat.jpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		201A3383280E86BD00E284C5 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		201A3385280E886700E284C5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		201A3387280E8B8500E284C5 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		201A338A280FB2D000E284C5 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		20B7CE1728101BD400027172 /* Cat.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Cat.jpeg; path = ../../../../Cat.jpeg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,12 +68,13 @@
 		201A336A280E2F7600E284C5 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				201A3389280FB25C00E284C5 /* Profile */,
 				201A336B280E2F7600E284C5 /* AppDelegate.swift */,
 				201A337F280E488B00E284C5 /* TabBar.swift */,
 				201A3381280E863B00E284C5 /* FeedViewController.swift */,
 				201A3383280E86BD00E284C5 /* PostViewController.swift */,
-				201A3385280E886700E284C5 /* ProfileViewController.swift */,
 				201A336D280E2F7600E284C5 /* SceneDelegate.swift */,
+				20B7CE1728101BD400027172 /* Cat.jpeg */,
 				201A336F280E2F7600E284C5 /* ViewController.swift */,
 				201A3387280E8B8500E284C5 /* InfoViewController.swift */,
 				201A3374280E2F7800E284C5 /* Assets.xcassets */,
@@ -77,6 +82,15 @@
 				201A3379280E2F7800E284C5 /* Info.plist */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		201A3389280FB25C00E284C5 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				201A3385280E886700E284C5 /* ProfileViewController.swift */,
+				201A338A280FB2D000E284C5 /* ProfileHeaderView.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +151,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20B7CE1828101BD400027172 /* Cat.jpeg in Resources */,
 				201A3378280E2F7800E284C5 /* LaunchScreen.storyboard in Resources */,
 				201A3375280E2F7800E284C5 /* Assets.xcassets in Resources */,
 			);
@@ -153,6 +168,7 @@
 				201A3370280E2F7600E284C5 /* ViewController.swift in Sources */,
 				201A336C280E2F7600E284C5 /* AppDelegate.swift in Sources */,
 				201A3382280E863B00E284C5 /* FeedViewController.swift in Sources */,
+				201A338B280FB2D000E284C5 /* ProfileHeaderView.swift in Sources */,
 				201A3386280E886700E284C5 /* ProfileViewController.swift in Sources */,
 				201A336E280E2F7600E284C5 /* SceneDelegate.swift in Sources */,
 				201A3388280E8B8500E284C5 /* InfoViewController.swift in Sources */,

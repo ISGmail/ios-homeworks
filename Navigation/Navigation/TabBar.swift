@@ -10,20 +10,20 @@ import UIKit
 class TabBar: UITabBarController {
 
     override func viewDidLoad() {
+        super.viewDidLoad()
         view.backgroundColor = .systemBackground
         UITabBar.appearance().barTintColor = .systemBackground
         tabBar.tintColor = .label
         setupVC()
-        super.viewDidLoad()
     }
     
    fileprivate func createNavController(viewCtrl: UIViewController,
                                                         title: String,
                                                         image: UIImage) -> UIViewController {
        let item = UITabBarItem(title: title, image: image, tag: 0)
-       item.titlePositionAdjustment = .init(horizontal: 0, vertical: 0)
+      // item.titlePositionAdjustment = .init(horizontal: 50, vertical: 0)
        let navController = UINavigationController(rootViewController: viewCtrl)
-       navController.navigationBar.prefersLargeTitles = true
+       navController.navigationBar.prefersLargeTitles = false
        navController.tabBarItem = item
        viewCtrl.navigationItem.title = title
            
