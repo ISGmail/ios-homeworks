@@ -32,7 +32,7 @@ class TabBar: UITabBarController {
     
     func setupVC() {
         let feedViewCtrl = createNavController(viewCtrl: FeedViewController(), title: NSLocalizedString("Лента", comment: ""), image: UIImage(systemName: "photo.on.rectangle.fill")!)
-        let profileViewCtrl = createNavController(viewCtrl: ProfileViewController(), title: NSLocalizedString("Профиль", comment: ""), image: UIImage(systemName: "brain.head.profile")!)
+        let profileViewCtrl = createNavController(viewCtrl: LoginViewController(), title: NSLocalizedString("Профиль", comment: ""), image: UIImage(systemName: "brain.head.profile")!)
         viewControllers = [feedViewCtrl, profileViewCtrl]
     }
 }
