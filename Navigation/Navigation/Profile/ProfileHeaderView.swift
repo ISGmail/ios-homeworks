@@ -31,7 +31,7 @@ class ProfileHeaderView: UIView {
         imageView.backgroundColor = .green
         imageView.image = UIImage(named: "Cat")
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 55
+        imageView.layer.cornerRadius = 50
         imageView.clipsToBounds = true
         imageView.layer.borderWidth = 3
         imageView.layer.borderColor = UIColor.white.cgColor
@@ -40,8 +40,8 @@ class ProfileHeaderView: UIView {
         self.addSubview(imageView)
           
         let constraintsForImage = [
-            imageView.widthAnchor.constraint(equalToConstant: 110),
-            imageView.heightAnchor.constraint(equalToConstant: 110),
+            imageView.widthAnchor.constraint(equalToConstant: 100),
+            imageView.heightAnchor.constraint(equalToConstant: 100),
             imageView.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor, constant: 16),
             imageView.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor)
         ]
@@ -79,7 +79,7 @@ class ProfileHeaderView: UIView {
         ]
         NSLayoutConstraint.activate(constraintsForTextView)
         
-        statusTextField.placeholder = "Ожидание..."
+        statusTextField.placeholder = "Waiting for status..."
         statusTextField.adjustsFontSizeToFitWidth = true
         statusTextField.minimumFontSize = 0.5
         statusTextField.returnKeyType = .done
@@ -95,6 +95,7 @@ class ProfileHeaderView: UIView {
         statusTextField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
         self.addSubview(statusTextField)
 
+
         statusTextField.translatesAutoresizingMaskIntoConstraints = false
         let constraintsForTextField = [
             statusTextField.topAnchor.constraint(equalTo: self.statusTextView.bottomAnchor, constant: 10),
@@ -104,7 +105,7 @@ class ProfileHeaderView: UIView {
         ]
         NSLayoutConstraint.activate(constraintsForTextField)
        
-        setStatusButton.setTitle("Показать статус", for: .normal)
+        setStatusButton.setTitle("Set Status", for: .normal)
         setStatusButton.backgroundColor = .systemBlue
         setStatusButton.layer.cornerRadius = 4
         setStatusButton.layer.shadowColor = UIColor.black.cgColor
@@ -112,15 +113,14 @@ class ProfileHeaderView: UIView {
         setStatusButton.layer.shadowRadius = 4
         setStatusButton.layer.shadowOpacity = 0.7
         setStatusButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
-        setStatusButton.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(setStatusButton)
-        
+
         setStatusButton.translatesAutoresizingMaskIntoConstraints = false
         let constraintsForButton = [
-            setStatusButton.topAnchor.constraint(equalTo: self.statusTextField.bottomAnchor, constant: 10),
+            setStatusButton.topAnchor.constraint(equalTo: self.statusTextField.bottomAnchor, constant: 5),
             setStatusButton.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor),
             setStatusButton.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor),
-            setStatusButton.heightAnchor.constraint(equalToConstant: 50)
+            setStatusButton.heightAnchor.constraint(equalToConstant: 40)
         ]
         NSLayoutConstraint.activate(constraintsForButton)
 

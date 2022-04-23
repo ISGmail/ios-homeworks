@@ -21,7 +21,6 @@ class TabBar: UITabBarController {
                                                         title: String,
                                                         image: UIImage) -> UIViewController {
        let item = UITabBarItem(title: title, image: image, tag: 0)
-      // item.titlePositionAdjustment = .init(horizontal: 50, vertical: 0)
        let navController = UINavigationController(rootViewController: viewCtrl)
        navController.navigationBar.prefersLargeTitles = false
        navController.tabBarItem = item

@@ -19,6 +19,10 @@
 		201A3388280E8B8500E284C5 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201A3387280E8B8500E284C5 /* InfoViewController.swift */; };
 		201A338B280FB2D000E284C5 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201A338A280FB2D000E284C5 /* ProfileHeaderView.swift */; };
 		204AEACE2812C464001CC2F1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204AEACD2812C464001CC2F1 /* LoginViewController.swift */; };
+		209EAB302812D13E00AC695B /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209EAB2F2812D13D00AC695B /* Post.swift */; };
+		209EAB322812D23A00AC695B /* PostsForPublic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209EAB312812D23A00AC695B /* PostsForPublic.swift */; };
+		209EAB352812E59700AC695B /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209EAB342812E59700AC695B /* PostTableViewCell.swift */; };
+		209EAB372813B91200AC695B /* Setupable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209EAB362813B91200AC695B /* Setupable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +40,10 @@
 		201A3387280E8B8500E284C5 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		201A338A280FB2D000E284C5 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		204AEACD2812C464001CC2F1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		209EAB2F2812D13D00AC695B /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		209EAB312812D23A00AC695B /* PostsForPublic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsForPublic.swift; sourceTree = "<group>"; };
+		209EAB342812E59700AC695B /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		209EAB362813B91200AC695B /* Setupable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setupable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,11 +76,11 @@
 		201A336A280E2F7600E284C5 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				209EAB332812D23F00AC695B /* Posts */,
 				201A3389280FB25C00E284C5 /* Profile */,
 				201A336B280E2F7600E284C5 /* AppDelegate.swift */,
 				201A337F280E488B00E284C5 /* TabBar.swift */,
 				201A3381280E863B00E284C5 /* FeedViewController.swift */,
-				201A3383280E86BD00E284C5 /* PostViewController.swift */,
 				201A336D280E2F7600E284C5 /* SceneDelegate.swift */,
 				201A336F280E2F7600E284C5 /* ViewController.swift */,
 				201A3387280E8B8500E284C5 /* InfoViewController.swift */,
@@ -88,9 +96,21 @@
 			children = (
 				201A3385280E886700E284C5 /* ProfileViewController.swift */,
 				201A338A280FB2D000E284C5 /* ProfileHeaderView.swift */,
+				209EAB362813B91200AC695B /* Setupable.swift */,
 				204AEACD2812C464001CC2F1 /* LoginViewController.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		209EAB332812D23F00AC695B /* Posts */ = {
+			isa = PBXGroup;
+			children = (
+				201A3383280E86BD00E284C5 /* PostViewController.swift */,
+				209EAB342812E59700AC695B /* PostTableViewCell.swift */,
+				209EAB2F2812D13D00AC695B /* Post.swift */,
+				209EAB312812D23A00AC695B /* PostsForPublic.swift */,
+			);
+			path = Posts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,11 +184,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				201A3384280E86BD00E284C5 /* PostViewController.swift in Sources */,
+				209EAB302812D13E00AC695B /* Post.swift in Sources */,
+				209EAB352812E59700AC695B /* PostTableViewCell.swift in Sources */,
 				201A3370280E2F7600E284C5 /* ViewController.swift in Sources */,
 				201A336C280E2F7600E284C5 /* AppDelegate.swift in Sources */,
 				201A3382280E863B00E284C5 /* FeedViewController.swift in Sources */,
 				201A338B280FB2D000E284C5 /* ProfileHeaderView.swift in Sources */,
+				209EAB322812D23A00AC695B /* PostsForPublic.swift in Sources */,
 				201A3386280E886700E284C5 /* ProfileViewController.swift in Sources */,
+				209EAB372813B91200AC695B /* Setupable.swift in Sources */,
 				201A336E280E2F7600E284C5 /* SceneDelegate.swift in Sources */,
 				201A3388280E8B8500E284C5 /* InfoViewController.swift in Sources */,
 				204AEACE2812C464001CC2F1 /* LoginViewController.swift in Sources */,
