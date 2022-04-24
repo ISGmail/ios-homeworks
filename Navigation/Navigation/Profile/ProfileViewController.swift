@@ -9,12 +9,13 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    private var headerHeight: CGFloat = 220
     private var addPosts: [Post] = posts
+    private let header = ProfileHeaderView()
+    private var headerHeight: CGFloat = 220
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        profileHeaderViewSetup()
+     //   profileHeaderViewSetup()
         view.addSubview(tableView)
         setConstraintsToView()
     }
@@ -51,27 +52,10 @@ class ProfileViewController: UIViewController {
            tableView.layer.borderWidth = 0.5
            return tableView
        }()
-    
-    private func profileHeaderViewSetup() {
-            self.view.backgroundColor = .white
-            self.view.addSubview(self.profileHeaderView)
-            
-            let topConstraint = self.profileHeaderView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor)
-            let leadingConstraint = self.profileHeaderView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor)
-            let trailingConstraint = self.profileHeaderView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor)
-            let heightConstraint = self.profileHeaderView.heightAnchor.constraint(equalToConstant: 220)
-            
-            NSLayoutConstraint.activate([
-                topConstraint,
-                leadingConstraint,
-                trailingConstraint,
-                heightConstraint
-            ].compactMap({$0}))
-        }
-    
+
     private func setConstraintsToView() {
     
-        let tableViewTopConstraint = self.tableView.topAnchor.constraint(equalTo: self.profileHeaderView.bottomAnchor)
+        let tableViewTopConstraint = self.tableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor)
         let tableViewBottomConstraint = self.tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
                let tableViewLeadingConstraint = self.tableView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10)
                let tableViewTrailingConstraint = self.tableView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10)
@@ -124,4 +108,22 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         } else { return }
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            addPosts.remove(at: indexPath.row - 1)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+            var header = UIView()
+            if section == 0 {
+                header = ProfileHeaderView()
+            }
+            return header
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+            return headerHeight
+        }
 }

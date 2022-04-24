@@ -141,27 +141,26 @@ class PostTableViewCell: UITableViewCell {
            ]
        }
        
-       private func stackViewPostConstraints() -> [NSLayoutConstraint] {
-           let topConstraint = self.stackViewPost.topAnchor.constraint(equalTo: self.backView.topAnchor, constant: 20)
-           let leadingConstraint = self.stackViewPost.leadingAnchor.constraint(equalTo: self.backView.leadingAnchor)
-           let trailingConstraint = self.stackViewPost.trailingAnchor.constraint(equalTo: self.backView.trailingAnchor)
-           let bottomConstraint = self.stackViewPost.bottomAnchor.constraint(equalTo: self.backView.bottomAnchor)
+    private func stackViewPostConstraints() -> [NSLayoutConstraint] {
+            let topConstraint = self.stackViewPost.topAnchor.constraint(equalTo: self.backView.topAnchor, constant: 20)
+            let leadingConstraint = self.stackViewPost.leadingAnchor.constraint(equalTo: self.backView.leadingAnchor)
+            let trailingConstraint = self.stackViewPost.trailingAnchor.constraint(equalTo: self.backView.trailingAnchor)
+            let bottomConstraint = self.stackViewPost.bottomAnchor.constraint(equalTo: self.backView.bottomAnchor)
 
-           return [
-               topConstraint, leadingConstraint, trailingConstraint, bottomConstraint,
-           ]
-       }
-       
-       private func stackViewLikesViewsConstraints() -> [NSLayoutConstraint] {
-           let topConstraint = self.stackViewLikesViews.topAnchor.constraint(greaterThanOrEqualTo: self.stackViewPost.bottomAnchor, constant: 20)
-           let leadingConstraint = self.stackViewLikesViews.leadingAnchor.constraint(equalTo: self.stackViewPost.leadingAnchor)
-           let trailingConstraint = self.stackViewLikesViews.trailingAnchor.constraint(equalTo: self.stackViewPost.trailingAnchor)
-           let bottomConstraint = self.stackViewLikesViews.bottomAnchor.constraint(equalTo: self.stackViewPost.bottomAnchor)
-
-           return [
-               topConstraint, leadingConstraint, trailingConstraint, bottomConstraint
-           ]
-       }
+            return [
+                topConstraint, leadingConstraint, trailingConstraint, bottomConstraint,
+            ]
+        }
+        
+        private func stackViewLikesViewsConstraints() -> [NSLayoutConstraint] {
+            let topConstraint = self.stackViewLikesViews.topAnchor.constraint(greaterThanOrEqualTo: self.stackViewPost.topAnchor, constant: 20)
+            let leadingConstraint = self.stackViewLikesViews.leadingAnchor.constraint(equalTo: self.stackViewPost.leadingAnchor)
+            let trailingConstraint = self.stackViewLikesViews.trailingAnchor.constraint(equalTo: self.stackViewPost.trailingAnchor)
+            let bottomConstraint = self.stackViewLikesViews.bottomAnchor.constraint(equalTo: self.stackViewPost.bottomAnchor)
+            return [
+                topConstraint, leadingConstraint, trailingConstraint, bottomConstraint
+            ]
+        }
 
    }
 

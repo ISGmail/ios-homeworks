@@ -47,9 +47,9 @@ class PhotosTableViewCell: UITableViewCell {
     private lazy var firstImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 5
+        imageView.layer.cornerRadius = 6
         imageView.image = UIImage(named: "11")
         return imageView
     }()
@@ -57,9 +57,9 @@ class PhotosTableViewCell: UITableViewCell {
     private lazy var secondImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 5
+        imageView.layer.cornerRadius = 6
         imageView.image = UIImage(named: "12")
         return imageView
     }()
@@ -67,9 +67,9 @@ class PhotosTableViewCell: UITableViewCell {
     private lazy var thirdImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 5
+        imageView.layer.cornerRadius = 6
         imageView.image = UIImage(named: "13")
         return imageView
     }()
@@ -77,9 +77,9 @@ class PhotosTableViewCell: UITableViewCell {
     private lazy var fourthImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 5
+        imageView.layer.cornerRadius = 6
         imageView.image = UIImage(named: "14")
         return imageView
     }()
@@ -89,12 +89,12 @@ class PhotosTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         label.textColor = .black
-        label.text = "Фото"
+        label.text = "Фотогалерея"
         return label
     }()
     
     private lazy var arrowImageView: UIImageView = {
-        let arrow = UIImage(systemName: "arrowshape.turn.up.right.fill")?.withTintColor(.systemBlue, renderingMode: .alwaysOriginal)
+        let arrow = UIImage(systemName: "arrowshape.turn.up.right.fill")?.withTintColor(.systemBlue, renderingMode: .automatic)
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = arrow
@@ -148,7 +148,7 @@ class PhotosTableViewCell: UITableViewCell {
     
     private func stackViewLabelsConstraints() -> [NSLayoutConstraint] {
         let arrowHeightConstraint = self.arrowImageView.heightAnchor.constraint(equalTo: self.arrowImageView.widthAnchor, multiplier: 0.8)
-        let arrowWidthConstraint = self.arrowImageView.widthAnchor.constraint(equalTo: self.arrowImageView.heightAnchor, multiplier: 1.0)
+        let arrowWidthConstraint = self.arrowImageView.widthAnchor.constraint(equalTo: self.arrowImageView.heightAnchor, multiplier: 1)
         let heightConstraint = self.stackViewLabels.heightAnchor.constraint(equalToConstant: 12)
 
         return [arrowHeightConstraint, arrowWidthConstraint, heightConstraint]
