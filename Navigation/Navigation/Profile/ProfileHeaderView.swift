@@ -31,7 +31,7 @@ class ProfileHeaderView: UIView {
         imageView.backgroundColor = .green
         imageView.image = UIImage(named: "Cat")
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 50
+        imageView.layer.cornerRadius = 55
         imageView.clipsToBounds = true
         imageView.layer.borderWidth = 3
         imageView.layer.borderColor = UIColor.white.cgColor
@@ -40,14 +40,14 @@ class ProfileHeaderView: UIView {
         self.addSubview(imageView)
           
         let constraintsForImage = [
-            imageView.widthAnchor.constraint(equalToConstant: 100),
-            imageView.heightAnchor.constraint(equalToConstant: 100),
+            imageView.widthAnchor.constraint(equalToConstant: 110),
+            imageView.heightAnchor.constraint(equalToConstant: 110),
             imageView.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor, constant: 16),
             imageView.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor)
         ]
         NSLayoutConstraint.activate(constraintsForImage)
 
-        fullNameLabel.text = "Hipster cat"
+        fullNameLabel.text = "Uporotyy kot"
         fullNameLabel.textColor = .black
         fullNameLabel.textAlignment = .left
         fullNameLabel.font = UIFont.boldSystemFont(ofSize: 18)
@@ -62,17 +62,17 @@ class ProfileHeaderView: UIView {
             ]
         NSLayoutConstraint.activate(constraintsForTitle)
 
-        statusTextView.backgroundColor = .gray
+        statusTextView.backgroundColor = .systemGray6
         statusTextView.font = .systemFont(ofSize: 14)
-        statusTextView.textColor = .systemGray5
-        statusTextView.textAlignment = .center
+        statusTextView.textColor = .gray
+        statusTextView.textAlignment = .left
         statusTextView.isEditable = false
         statusTextView.text = "Waiting for something..."
         self.addSubview(statusTextView)
 
         statusTextView.translatesAutoresizingMaskIntoConstraints = false
         let constraintsForTextView = [
-            statusTextView.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor, constant: 100),
+            statusTextView.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor, constant: 90),
             statusTextView.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor),
             statusTextView.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor, constant: 120),
             statusTextView.heightAnchor.constraint(equalToConstant: 30)

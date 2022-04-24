@@ -57,7 +57,7 @@ class PostTableViewCell: UITableViewCell {
        
        private lazy var pictureImageView: UIImageView = {
            let imageView = UIImageView()
-           imageView.contentMode = .scaleAspectFit
+           imageView.contentMode = .center
            imageView.translatesAutoresizingMaskIntoConstraints = false
            return imageView
        }()
@@ -173,7 +173,7 @@ class PostTableViewCell: UITableViewCell {
            self.headerLabel.text = viewModel.author
            self.descriptionLabel.text = viewModel.description
            self.pictureImageView.image = UIImage(named: viewModel.image)
-           self.likesLabel.text = "Likes: \(String(viewModel.likes))"
-           self.viewsLabel.text = "Views: \(String(viewModel.views))"
+           self.likesLabel.text = "Нравится: \(String(viewModel.likes))"
+           self.viewsLabel.text = "Просмотры: \(String(viewModel.views))"
        }
    }
