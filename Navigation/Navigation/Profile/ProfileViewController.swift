@@ -104,8 +104,8 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView( _ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-        self.navigationController?.pushViewController(PhotosViewController(), animated: true)
-        } else { return }
+            self.navigationController?.pushViewController(PhotosViewController(), animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
