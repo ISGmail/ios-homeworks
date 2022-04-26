@@ -13,6 +13,8 @@ class PhotosViewController: UIViewController {
             static let itemCount: CGFloat = 3
         }
         
+    let detailPhoto = DetailPhoto()
+    
     private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -25,6 +27,7 @@ class PhotosViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: self.layout)
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.backgroundColor = .white
         collectionView.register(PhotosCollectionViewCell.self, forCellWithReuseIdentifier: "PhotosCollectionViewCell")
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "DefaultCollectionCell")
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -41,17 +44,25 @@ class PhotosViewController: UIViewController {
     }
         
     override func viewWillAppear(_ animated: Bool) {
-            super.viewWillAppear(animated)
-            navigationController?.navigationBar.isHidden = false
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.backgroundColor = .white
     }
         
     private func setupView() {
-        view.addSubview(self.collectionView)
+        self.view.addSubview(self.collectionView)
+        self.detailPhoto.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(detailPhoto)
+        
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            detailPhoto.topAnchor.constraint(equalTo: view.topAnchor),
+            detailPhoto.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            detailPhoto.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            detailPhoto.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
         
@@ -86,9 +97,12 @@ class PhotosViewController: UIViewController {
             return cell
         }
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            let vc = DetailPhotoViewController()
-            vc.selectedImage = photosCollection[indexPath.row].image
-            navigationController?.pushViewController(vc, animated: true)
+            UIView.animate(withDuration: 1, delay: 0, options: .curveEaseInOut) {
+                let imageToView = self.photosCollection[indexPath.item].image
+                self.detailPhoto.setImageToView(image: imageToView)
+                self.detailPhoto.transform = .identity
+                self.detailPhoto.alpha = 1
+            }
         }
         
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

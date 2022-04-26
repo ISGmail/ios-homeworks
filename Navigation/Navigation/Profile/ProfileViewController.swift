@@ -7,15 +7,15 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, TapLikedDelegate {
     
+    private var liked: Bool = false
     private var addPosts: [Post] = posts
     private let header = ProfileHeaderView()
     private var headerHeight: CGFloat = 220
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     //   profileHeaderViewSetup()
         view.addSubview(tableView)
         setConstraintsToView()
     }
@@ -67,6 +67,13 @@ class ProfileViewController: UIViewController {
                    tableViewTrailingConstraint
                ])
     }
+    
+ //   private let tapGestureRecognizer = UITapGestureRecognizer()
+    func tapLikedLabel() {
+        liked.toggle()
+        self.tableView.reloadData()
+    }
+
         
     @objc func dismissKeyboard() {
         view.endEditing(true)
@@ -91,6 +98,13 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
                 return cell
             }
+            
+            cell.likedDelegate = self
+            if liked {
+                print("Лайк!")
+                addPosts[indexPath.row - 1].likes += 1
+                liked.toggle()
+            }
             let article = self.addPosts[indexPath.row - 1]
             let viewModel = PostTableViewCell.ViewModel(author: article.author,
                                                         image: article.image,
@@ -105,6 +119,16 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView( _ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
             self.navigationController?.pushViewController(PhotosViewController(), animated: true)
+        } else {
+            let viewController = OnePostViewController()
+            viewController.image = addPosts[indexPath.row - 1].image
+            viewController.likes = addPosts[indexPath.row - 1].likes
+            viewController.views = addPosts[indexPath.row - 1].views + 1
+            viewController.author = addPosts[indexPath.row - 1].author
+            viewController.descriptionTxt = addPosts[indexPath.row - 1].description
+            addPosts[indexPath.row - 1].views += 1
+            self.tableView.reloadRows(at: [indexPath], with: .none)
+            navigationController?.pushViewController(viewController, animated: true)
         }
     }
     

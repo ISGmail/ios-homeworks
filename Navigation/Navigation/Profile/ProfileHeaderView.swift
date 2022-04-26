@@ -47,7 +47,7 @@ class ProfileHeaderView: UIView {
         ]
         NSLayoutConstraint.activate(constraintsForImage)
 
-        fullNameLabel.text = "Uporotyy kot"
+        fullNameLabel.text = "Кот-Бегемот"
         fullNameLabel.textColor = .black
         fullNameLabel.textAlignment = .left
         fullNameLabel.font = UIFont.boldSystemFont(ofSize: 18)
@@ -67,7 +67,7 @@ class ProfileHeaderView: UIView {
         statusTextView.textColor = .gray
         statusTextView.textAlignment = .left
         statusTextView.isEditable = false
-        statusTextView.text = "Waiting for something..."
+        statusTextView.text = "Статус не установлен"
         self.addSubview(statusTextView)
 
         statusTextView.translatesAutoresizingMaskIntoConstraints = false
@@ -79,24 +79,23 @@ class ProfileHeaderView: UIView {
         ]
         NSLayoutConstraint.activate(constraintsForTextView)
         
-        statusTextField.placeholder = "Waiting for status..."
+        statusTextField.placeholder = "Введите статус..."
         statusTextField.adjustsFontSizeToFitWidth = true
         statusTextField.minimumFontSize = 0.5
         statusTextField.returnKeyType = .done
         statusTextField.autocapitalizationType = .words
         statusTextField.font = .systemFont(ofSize: 15)
-        statusTextField.textColor = .systemGray2
-        statusTextField.backgroundColor = .white
-        statusTextField.borderStyle = .none
+        statusTextField.textColor = .black
+        statusTextField.backgroundColor = .systemGray4
+        statusTextField.borderStyle = .roundedRect
         statusTextField.returnKeyType = .next
         statusTextField.keyboardType = .default
         statusTextField.clearButtonMode = .always
-        statusTextField.layer.cornerRadius = 7
+        statusTextField.layer.cornerRadius = 12
         statusTextField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
+        statusTextField.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(statusTextField)
 
-
-        statusTextField.translatesAutoresizingMaskIntoConstraints = false
         let constraintsForTextField = [
             statusTextField.topAnchor.constraint(equalTo: self.statusTextView.bottomAnchor, constant: 10),
             statusTextField.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor),
@@ -105,17 +104,17 @@ class ProfileHeaderView: UIView {
         ]
         NSLayoutConstraint.activate(constraintsForTextField)
        
-        setStatusButton.setTitle("Set Status", for: .normal)
+        setStatusButton.setTitle("Установить статус", for: .normal)
         setStatusButton.backgroundColor = .systemBlue
         setStatusButton.layer.cornerRadius = 4
         setStatusButton.layer.shadowColor = UIColor.black.cgColor
         setStatusButton.layer.shadowOffset = CGSize(width: 4, height: 4)
         setStatusButton.layer.shadowRadius = 4
         setStatusButton.layer.shadowOpacity = 0.7
+        setStatusButton.translatesAutoresizingMaskIntoConstraints = false
         setStatusButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         self.addSubview(setStatusButton)
 
-        setStatusButton.translatesAutoresizingMaskIntoConstraints = false
         let constraintsForButton = [
             setStatusButton.topAnchor.constraint(equalTo: self.statusTextField.bottomAnchor, constant: 5),
             setStatusButton.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor),
@@ -127,14 +126,15 @@ class ProfileHeaderView: UIView {
         }
         
     @objc func buttonPressed(sender: UIButton) {
-         print(statusText)
-         if statusText == "" {
-             statusTextView.text = "Ожидание..."
-         } else {
-                 statusTextView.text = statusText
-             }
-         }
-
+        if self.statusTextField.text == "" {
+            statusTextField.shake()
+        }
+        else {
+            if statusTextView.text != statusTextField.text {
+                statusTextView.text = statusTextField.text
+            }
+        }
+    }
      @objc func statusTextChanged(_ textField: UITextField) {
          if let status = textField.text {
              statusText = status

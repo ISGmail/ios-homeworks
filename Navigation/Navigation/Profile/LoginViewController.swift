@@ -8,6 +8,10 @@
 import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
+    
+    private var defaultEmail: String = "isgmail@mail.ru"
+    private var defaultPassword: String = "trustno1"
+    private var minCountPass: Int = 6
 
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -74,7 +78,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return textField
     }()
     
-    private lazy var logInButton: UIButton = {
+    private lazy var loginButton: UIButton = {
         let button = UIButton()
         button.setTitle("Войти", for: .normal)
         button.setBackgroundImage(UIImage(named: "blue_pixel"), for: .normal)
@@ -83,6 +87,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         button.addTarget(self, action: #selector(self.buttonClicked), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
+    }()
+    
+    private lazy var labelAlert: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 10
+        label.alpha = 0
+        label.font = .systemFont(ofSize: 15, weight: .bold)
+        label.textAlignment = .center
+        label.layer.borderWidth = 2
+        label.layer.borderColor = UIColor.black.cgColor
+        label.backgroundColor = .systemGray5
+        label.layer.cornerRadius = 10
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
     override func viewDidLoad() {
@@ -121,11 +139,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     private func configureSubviews() {
         self.view.addSubview(self.scrollView)
         self.scrollView.addSubview(self.contentView)
-        self.contentView.addSubview(self.logInButton)
+        self.contentView.addSubview(self.loginButton)
         self.contentView.addSubview(self.logoImageView)
         self.contentView.addSubview(self.loginPasswordStackView)
         self.loginPasswordStackView.addArrangedSubview(self.loginTextField)
         self.loginPasswordStackView.addArrangedSubview(self.passwordTextField)
+        self.contentView.addSubview(labelAlert)
     }
     
     private func setupConstraints() {
@@ -153,10 +172,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let rightLoginPasswordStackViewConstraint = self.loginPasswordStackView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16)
         let heightLoginPasswordStackViewConstraint = self.loginPasswordStackView.heightAnchor.constraint(equalToConstant: 100)
         
-        let topLogInButtonConstraint = self.logInButton.topAnchor.constraint(equalTo: self.loginPasswordStackView.bottomAnchor, constant: 16)
-        let leadingLogInButtonConstraint = self.logInButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16)
-        let trailingLogInButtonConstraint = self.logInButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16)
-        let heightLogInButtonConstraint = self.logInButton.heightAnchor.constraint(equalToConstant: 50)
+        let topLogInButtonConstraint = self.loginButton.topAnchor.constraint(equalTo: self.loginPasswordStackView.bottomAnchor, constant: 16)
+        let leadingLogInButtonConstraint = self.loginButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16)
+        let trailingLogInButtonConstraint = self.loginButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16)
+        let heightLogInButtonConstraint = self.loginButton.heightAnchor.constraint(equalToConstant: 50)
+
+        let labelAlertTopAnchor = labelAlert.topAnchor.constraint(equalTo: self.loginButton.bottomAnchor, constant: 20)
+        let labelAlertLeadingAnchor = labelAlert.leadingAnchor.constraint(equalTo: self.loginPasswordStackView.leadingAnchor)
+        let labelAlertTrailingAnchor = labelAlert.trailingAnchor.constraint(equalTo: self.loginPasswordStackView.trailingAnchor)
+        let labelAlertHeight = labelAlert.heightAnchor.constraint(equalToConstant: 80)
         
         NSLayoutConstraint.activate([
             topConstraint,
@@ -184,14 +208,63 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             topLogInButtonConstraint,
             leadingLogInButtonConstraint,
             trailingLogInButtonConstraint,
-            heightLogInButtonConstraint
+            heightLogInButtonConstraint,
+            
+            labelAlertTopAnchor,
+            labelAlertLeadingAnchor,
+            labelAlertTrailingAnchor,
+            labelAlertHeight
         ])
     }
     
     @objc private func buttonClicked() {
+        
+        var needShowAlert: Bool = false
         let profileViewController = ProfileViewController()
-        navigationController?.pushViewController(profileViewController, animated: true)
-        navigationController?.navigationBar.isHidden = true
+        
+        //Отобразить нижний лейбл вью если с количеством символов беда
+        if self.passwordTextField.text?.count ?? 0 < 6 {
+            labelAlert.alpha = 1
+            labelAlert.text = "Ошибка. Минимальное количество символов пароля: " + String(minCountPass)
+        } else {
+            labelAlert.alpha = 0
+        }
+        
+        if self.loginTextField.text == "" {
+            self.loginTextField.layer.borderColor = UIColor.red.cgColor
+            self.loginTextField.layer.borderWidth = 5
+        }
+        else {
+            self.loginTextField.layer.borderColor = UIColor.lightGray.cgColor
+            self.loginTextField.layer.borderWidth = 0.5
+        }
+        if self.passwordTextField.text == "" {
+            self.passwordTextField.layer.borderColor = UIColor.red.cgColor
+            self.passwordTextField.layer.borderWidth = 5
+        }
+        else {
+            self.passwordTextField.layer.borderColor = UIColor.lightGray.cgColor
+            self.passwordTextField.layer.borderWidth = 0.5
+        }
+        if (self.loginTextField.text == defaultEmail) && (self.passwordTextField.text == defaultPassword) {
+          navigationController?.pushViewController(profileViewController, animated: true)
+          navigationController?.navigationBar.isHidden = true
+        }
+        else {
+            if self.loginTextField.text != defaultEmail {
+                loginTextField.shake()
+                needShowAlert = true
+            }
+            if self.passwordTextField.text != defaultPassword {
+                passwordTextField.shake()
+                needShowAlert = true
+            }
+        }
+        if needShowAlert && self.passwordTextField.text != "" && self.loginTextField.text != "" {
+            let alert = UIAlertController(title: "Введены неверные учетные данные", message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true)
+        }
     }
     
     @objc func adjustForKeyboard (notification: Notification){
@@ -211,4 +284,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         scrollView.verticalScrollIndicatorInsets = .zero
     }
 
+}
+
+extension UIView {
+    func shake(count: Float = 5, for duration: TimeInterval = 0.5, withTranslation translation: Float = 3) {
+        let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+        animation.repeatCount = count
+        animation.duration = duration/TimeInterval(animation.repeatCount)
+        animation.autoreverses = true
+        animation.values = [translation, -translation]
+        layer.add(animation, forKey: "shake")
+    }
 }
