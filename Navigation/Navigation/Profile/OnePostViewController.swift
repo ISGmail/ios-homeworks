@@ -173,17 +173,4 @@ class OnePostViewController: UIViewController {
             self.stackViewPost.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor)
         ])
     }
-
-    /*private func addView() {
-        if var views = views {
-            if let viewed = isViewed {
-                if !viewed {
-                    views += 1
-                    viewsCount = views
-                } else {
-                    viewsCount = views
-                }
-            }
-        }
-    }*/
 }
