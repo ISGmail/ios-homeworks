@@ -38,20 +38,21 @@ class ProfileViewController: UIViewController {
     }
     
     private lazy var tableView: UITableView = {
-           let tableView = UITableView(frame: .zero, style: .grouped)
-           tableView.translatesAutoresizingMaskIntoConstraints = false
-           tableView.rowHeight = UITableView.automaticDimension
-           tableView.dataSource = self
-           tableView.delegate = self
-           tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCell")
-           tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "PostCell")
-           tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: "PhotosTableViewCell")
-           tableView.backgroundColor = .clear
-           tableView.backgroundColor = .systemGray6
-           tableView.layer.borderColor = UIColor.lightGray.cgColor
-           tableView.layer.borderWidth = 0.5
-           return tableView
-       }()
+        let tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCell")
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "PostCell")
+        tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: "PhotosTableViewCell")
+    //    tableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: "Header")
+        tableView.backgroundColor = .clear
+        tableView.backgroundColor = .systemGray6
+        tableView.layer.borderColor = UIColor.lightGray.cgColor
+        tableView.layer.borderWidth = 0.5
+        return tableView
+    }()
 
     private func setConstraintsToView() {
     
@@ -80,6 +81,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     }
             
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print(indexPath.row)
         if indexPath.row == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "PhotosTableViewCell", for: indexPath) as? PhotosTableViewCell else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
@@ -116,11 +118,9 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-            var header = UIView()
-            if section == 0 {
-                header = ProfileHeaderView()
-            }
-            return header
+        return header
+      //  let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "Header")
+      //  return headerView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
