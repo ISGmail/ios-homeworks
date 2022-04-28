@@ -7,11 +7,11 @@
 
 import UIKit
 
-class ProfileHeaderView: UIView {
+class ProfileHeaderView: UITableViewHeaderFooterView {
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.setupView()
+    override init(reuseIdentifier: String?) {
+           super.init(reuseIdentifier: reuseIdentifier)
+           self.setupView()
     }
     
     required init?(coder: NSCoder) {

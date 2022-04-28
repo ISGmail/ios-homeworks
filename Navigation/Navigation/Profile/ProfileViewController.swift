@@ -46,7 +46,7 @@ class ProfileViewController: UIViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCell")
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "PostCell")
         tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: "PhotosTableViewCell")
-      //  tableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: "Header")
+        tableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: "Header")
         tableView.backgroundColor = .clear
         tableView.backgroundColor = .systemGray6
         tableView.layer.borderColor = UIColor.lightGray.cgColor
@@ -118,9 +118,9 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-          return header
-     //   let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "Header")
-     //   return headerView
+      //    return header
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "Header")
+        return headerView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
