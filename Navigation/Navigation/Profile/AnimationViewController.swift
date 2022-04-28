@@ -99,16 +99,15 @@ class AnimationViewController: UIViewController {
                self.imageView.layer.cornerRadius = self.isExpanded ? 0 : 75
                self.view.layoutIfNeeded()
            } completion: { _ in
+               UIView.animate(withDuration: 0.3, delay: 0.3) {
+                   self.xMarkButton.alpha = self.isExpanded ? 1 : 0
+               } completion: { _ in
+                   self.xMarkButton.isHidden = !self.isExpanded
+               }
            }
-
+        
            if self.isExpanded {
                self.xMarkButton.isHidden = false
-           }
-
-           UIView.animate(withDuration: 0.3, delay: 0.5) {
-               self.xMarkButton.alpha = self.isExpanded ? 1 : 0
-           } completion: { _ in
-               self.xMarkButton.isHidden = !self.isExpanded
            }
        }
 

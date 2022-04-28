@@ -199,12 +199,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
             
-            let contentOffset: CGPoint = notification.name == UIResponder.keyboardWillHideNotification
-            ? .zero
-            : CGPoint(x: 0, y: keyboardHeight / 2)
-            self.scrollView.contentOffset = contentOffset
+            let loginButtonPointY = self.logInButton.frame.origin.y + 50
+            let keyboardOriginY = self.view.frame.height - keyboardHeight
+            
+            let yOffset = keyboardOriginY < loginButtonPointY ? loginButtonPointY - keyboardOriginY + 16 : 0
+            
+            self.scrollView.contentOffset = CGPoint(x: 0, y: yOffset)
         }
     }
+
 
     @objc private func kbdHide(notification: NSNotification) {
         scrollView.contentInset.bottom = .zero
